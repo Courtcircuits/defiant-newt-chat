@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+:root {
+  --terminal-bg: #000000;
+  --terminal-green: #00ff00;
+  --terminal-dark-green: #00aa00;
+}
+
+@font-face {
+  font-family: 'Terminal';
+  src: local('Courier New'), local('Courier'), local('monospace');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* CRT Effect Styles */
+.crt-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+  overflow: hidden;
+}
+
+.crt-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  animation: flicker 0.15s infinite;
+}
+
+/* Screen curvature effect */
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Scanlines */
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+  animation: scanline 8s linear infinite;
+}
+
+/* Phosphor glow */
+.crt-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor;
+  animation: textGlow 0.3s ease-in-out infinite alternate;
+}
+
+/* Chromatic aberration */
+.crt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.03)
+    );
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
+/* Screen flicker */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.98;
+  }
+  15% {
+    opacity: 0.97;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.99;
+  }
+  30% {
+    opacity: 0.97;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.98;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.97;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.99;
+  }
+  65% {
+    opacity: 0.97;
+  }
+  70% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.98;
+  }
+  80% {
+    opacity: 0.97;
+  }
+  85% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.99;
+  }
+  95% {
+    opacity: 0.97;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* Text glow animation */
+@keyframes textGlow {
+  0% {
+    text-shadow:
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  100% {
+    text-shadow:
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor;
+  }
+}

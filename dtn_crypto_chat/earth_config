@@ -1,0 +1,8 @@
+[user]
+eid=dtn://earth.dtn/
+agentid=earth
+socket=/home/courtcircuits/projects/defiant-newt-chat/dtn_crypto_chat/ud3tn/ud3tn-earth.aap2.socket
+user_name=Earth
+ca_eid=dtn://ca.dtn/
+ca_agentid=ca
+ca_public_key=302a300506032b65700321003e189d88fa21d968580450a49fa6150ea6f0b6150eefcbfd10395605856460a1

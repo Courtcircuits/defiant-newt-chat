@@ -1,6 +1,3 @@
-THIS IS A FORK OF THE ORIGINAL PROJECT: https://github.com/raniya02/dtn_crypto_chat
-THIS IMPLEMENTATION IS VOLUNTARILY BROKEN FOR EDUCATION PURPOSES
-
 # DTN Chat Application
 
 This project implements a terminal-based chat application that facilitates secure communication between users. The application serves as a proof of concept for **BERMUDA** (**B**PSec-Compa­tible Key **E**stablishment and **R**evocation **M**echanism for **U**nicast **M**essaging in **D**elay-tolerant **A**pplications), a key management system designed for Delay- and Disruption-Tolerant Networks (DTNs).

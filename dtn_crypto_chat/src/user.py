@@ -536,22 +536,46 @@ class User(Node):
         else:
             manipulated_date_str = ""
 
-        # Open a new terminal:
-        command = [
-            'gnome-terminal', '--', 'bash', '-c',
-            f'cd ud3tn && source .venv/bin/activate && cd .. && python src/communication.py '
-            f'{shlex.quote(self.user_name)} '
-            f'{shlex.quote(self.socket)} '
-            f'{shlex.quote(self.revocation_status)} '
-            f'{shlex.quote(self.secret)} '
-            f'{shlex.quote(communication_partner_name)} '
-            f'{shlex.quote(key)} '
-            f'{shlex.quote(partner_certificate_issuance_date)} '
-            f'{shlex.quote(partner_validity_hash)} '
-            f'{shlex.quote(manipulated_date_str)} '
-            f'{shlex.quote(self.pipe_name)}; exec bash'
-        ]
-        subprocess.Popen(command)
+
+        port = 8000
+        if communication_partner_name == "Earth":
+
+            # Set environment variables for the FastAPI server
+
+            command = [
+                'bash', '-c',
+                f'cd ud3tn && source .venv/bin/activate && cd .. && python src/ws_server.py '
+                f'{shlex.quote(self.user_name)} '
+                f'{shlex.quote(self.socket)} '
+                f'{shlex.quote(self.revocation_status)} '
+                f'{shlex.quote(self.secret)} '
+                f'{shlex.quote(communication_partner_name)} '
+                f'{shlex.quote(key)} '
+                f'{shlex.quote(partner_certificate_issuance_date)} '
+                f'{shlex.quote(partner_validity_hash)} '
+                f'{shlex.quote(manipulated_date_str)} '
+                f'{shlex.quote(self.pipe_name)} '
+                f'{shlex.quote(str(port))}'
+            ]
+
+            subprocess.Popen(command)
+        else:
+            command = [
+                'bash', '-c',
+                f'cd ud3tn && source .venv/bin/activate && cd .. && python src/bot.py '
+                f'{shlex.quote(self.user_name)} '
+                f'{shlex.quote(self.socket)} '
+                f'{shlex.quote(self.revocation_status)} '
+                f'{shlex.quote(self.secret)} '
+                f'{shlex.quote(communication_partner_name)} '
+                f'{shlex.quote(key)} '
+                f'{shlex.quote(partner_certificate_issuance_date)} '
+                f'{shlex.quote(partner_validity_hash)} '
+                f'{shlex.quote(manipulated_date_str)} '
+                f'{shlex.quote(self.pipe_name)} '
+                f'{shlex.quote(str(port))}'
+            ]
+            subprocess.Popen(command)
 
 
     def initiate_communication(self, entered_username):
