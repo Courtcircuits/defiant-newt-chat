@@ -1,6 +1,6 @@
 # Defiant Newt Intergalactic Chat
 
-CTF réalisé par [Defiant Newt](https://defiantnewt.fr/) et [Courtcircuits](https://courtcircuits.xyz/) avec 💖.
+CTF réalisé par [Defiant Newt](https://defiantnewt.fr/) et [Courtcircuits](https://courtcircuit.xyz/) avec 💖.
 
 [➡️Lien vers le challenge⬅️](https://dtn-ctf.courtcircuit.xyz)
 
